@@ -56,5 +56,5 @@ fun ShowCharacterList(disney: DisneyModel, onClick:() -> Unit) {
 @Preview
 @Composable
 fun ShowCharacterPreview() {
-    ShowCharacterList(DisneyModel(1,"","", listOf(), listOf()))
+    ShowCharacterList(DisneyModel(1,"","", listOf(), listOf()), {})
 }

@@ -10,7 +10,8 @@ import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun ListScreen(
-    listScreenViewModel: ListScreenViewModel = koinViewModel()
+    listScreenViewModel: ListScreenViewModel = koinViewModel(),
+    onItemClicked: () -> Unit
 ) {
 
     val state = listScreenViewModel.disneyList.observeAsState()
@@ -20,7 +21,7 @@ fun ListScreen(
 
         items(disneyList?.size?: 0) { i ->
             disneyList?.get(i)?.let { disney ->
-                ShowCharacterList(disney = disney)
+                ShowCharacterList(disney = disney, onClick = onItemClicked)
             }
         }
     }
@@ -29,5 +30,5 @@ fun ListScreen(
 @Preview
 @Composable
 fun ListScreenPreview(){
-    ListScreen()
+    //ListScreen()
 }
