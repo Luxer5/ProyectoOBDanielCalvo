@@ -6,5 +6,5 @@ import retrofit2.http.GET
 interface DisneyApi{
 
     @GET("character?page=2")
-    suspend fun getDisneyList() : List<DataDto>
+    suspend fun getDisneyList() : DataDto
 }

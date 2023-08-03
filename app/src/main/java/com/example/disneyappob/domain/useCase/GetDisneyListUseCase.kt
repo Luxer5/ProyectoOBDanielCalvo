@@ -6,5 +6,5 @@ class GetDisneyListUseCase(
     private val disneyRepository: DisneyRepository
 ) {
 
-
+    suspend fun invoke() = disneyRepository.getDisneyList()
 }
