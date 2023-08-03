@@ -1,6 +1,8 @@
 package com.example.disneyappob.data.dto
 
+import com.squareup.moshi.Json
+
 data class DataDto(
-    val data: List<DisneyDto>
+    @Json(name = "data") val data: List<DisneyDto>
     )
 
