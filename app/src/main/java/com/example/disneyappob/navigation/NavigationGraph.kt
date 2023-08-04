@@ -14,6 +14,7 @@ fun NavigationGraph(){
     ){
         addStartScreen(navController)
         addListScreen(navController)
+        addDetailScreen(navController)
 
     }
 }
