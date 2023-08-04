@@ -18,6 +18,13 @@ sealed class Screen(
     )
     object DetailScreen : Screen(
         route = "detail",
-        arguments = emptyList()
+        arguments = listOf(
+            navArgument(
+                "disneyId"
+            ){
+                type = NavType.IntType
+                nullable = false
+            }
+        )
     )
 }

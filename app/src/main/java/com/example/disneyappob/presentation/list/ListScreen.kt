@@ -1,5 +1,6 @@
 package com.example.disneyappob.presentation.list
 
+import android.util.Log
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -11,7 +12,7 @@ import org.koin.androidx.compose.koinViewModel
 @Composable
 fun ListScreen(
     listScreenViewModel: ListScreenViewModel = koinViewModel(),
-    onItemClicked: () -> Unit
+    onItemClicked: (Int) -> Unit
 ) {
 
     val state = listScreenViewModel.disneyList.observeAsState()
@@ -23,7 +24,7 @@ fun ListScreen(
             disneyList?.get(i)?.let { disney ->
                 ShowCharacterList(
                     disney = disney,
-                    onClick = onItemClicked
+                    onClick = {onItemClicked.invoke(disney.id)}
                     )
             }
         }

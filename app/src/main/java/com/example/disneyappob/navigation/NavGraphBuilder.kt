@@ -18,15 +18,19 @@ fun NavGraphBuilder.addStartScreen(navController: NavController){
 fun NavGraphBuilder.addListScreen(navController: NavController){
 
     composable(Screen.ListScreen.route){
-        ListScreen{
-            navController.navigate(Screen.DetailScreen.route)
+        ListScreen{disneyId ->
+            navController.navigate("${Screen.DetailScreen.route}/$disneyId")
         }
     }
 }
 
 fun NavGraphBuilder.addDetailScreen(navController: NavController){
 
-    composable(Screen.DetailScreen.route){
-        DetailScreen()
+    composable(
+        route= Screen.DetailScreen.route + "/{disneyId}",
+        arguments = Screen.DetailScreen.arguments
+    ){navBackStackEntry ->
+        val id = navBackStackEntry.arguments?.getInt("disneyId") ?: 0
+        DetailScreen(id = id)
     }
 }
