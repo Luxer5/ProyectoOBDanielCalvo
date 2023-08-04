@@ -18,7 +18,9 @@ fun NavGraphBuilder.addStartScreen(navController: NavController){
 fun NavGraphBuilder.addListScreen(navController: NavController){
 
     composable(Screen.ListScreen.route){
-        ListScreen(onItemClicked = { navController.navigate(Screen.DetailScreen.route)})
+        ListScreen{
+            navController.navigate(Screen.DetailScreen.route)
+        }
     }
 }
 

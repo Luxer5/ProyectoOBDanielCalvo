@@ -7,5 +7,7 @@ class RemoteDataSourceImpl(
     private val disneyApi: DisneyApi
 ) : RemoteDataSource{
     override suspend fun getDisneyList(): List<DisneyDto> = disneyApi.getDisneyList().data
+    override suspend fun getDisneyCharacter(id: Int): DisneyDto = disneyApi.getDisneyCharacter(id).data
+
 
 }

@@ -16,12 +16,15 @@ fun ListScreen(
 
     val state = listScreenViewModel.disneyList.observeAsState()
 
-    LazyColumn(horizontalAlignment = Alignment.CenterHorizontally){
+    LazyColumn(horizontalAlignment = Alignment.CenterHorizontally) {
         val disneyList = state.value
 
-        items(disneyList?.size?: 0) { i ->
+        items(disneyList?.size ?: 0) { i ->
             disneyList?.get(i)?.let { disney ->
-                ShowCharacterList(disney = disney, onClick = onItemClicked)
+                ShowCharacterList(
+                    disney = disney,
+                    onClick = onItemClicked
+                    )
             }
         }
     }
@@ -29,6 +32,6 @@ fun ListScreen(
 
 @Preview
 @Composable
-fun ListScreenPreview(){
+fun ListScreenPreview() {
     //ListScreen()
 }

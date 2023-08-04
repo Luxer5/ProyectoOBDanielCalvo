@@ -5,4 +5,5 @@ import com.example.disneyappob.data.dto.DisneyDto
 
 interface RemoteDataSource {
     suspend fun getDisneyList(): List<DisneyDto>
+    suspend fun getDisneyCharacter(id:Int) : DisneyDto
 }

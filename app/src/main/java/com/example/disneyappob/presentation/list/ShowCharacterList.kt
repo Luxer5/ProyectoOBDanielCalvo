@@ -27,7 +27,7 @@ import com.example.disneyappob.R
 import com.example.disneyappob.domain.model.DisneyModel
 
 @Composable
-fun ShowCharacterList(disney: DisneyModel, onClick:() -> Unit) {
+fun ShowCharacterList(disney: DisneyModel, onClick:(() -> Unit)) {
     Row(
         modifier = Modifier
             .fillMaxWidth()

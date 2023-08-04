@@ -10,4 +10,6 @@ class DisneyRepositoryImpl(
     override suspend fun getDisneyList(): List<DisneyModel> = remoteDataSource.getDisneyList().map {
         it.toDisneyModel()
     }
+
+    override suspend fun getDisneyCharacter(id: Int): DisneyModel = remoteDataSource.getDisneyCharacter(id).toDisneyModel()
 }
