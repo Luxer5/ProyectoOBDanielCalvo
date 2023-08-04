@@ -23,11 +23,15 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.disneyappob.R
 import com.example.disneyappob.domain.model.DisneyModel
+import com.example.disneyappob.presentation.list.ListScreenViewModel
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun DetailScreen(
-
+    detailScreenViewModel: DetailScreenViewModel = koinViewModel()
 ) {
+
+
     Column(
         modifier = Modifier
             .fillMaxSize()
