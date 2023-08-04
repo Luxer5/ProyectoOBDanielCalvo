@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.disneyappob.domain.model.DisneyListModel
 import com.example.disneyappob.domain.model.DisneyModel
 import com.example.disneyappob.domain.useCase.GetDisneyListUseCase
 import kotlinx.coroutines.Dispatchers
@@ -16,9 +17,9 @@ class ListScreenViewModel (
 
     //val testString = "Test"
 
-    private val _disneyList = MutableLiveData<List<DisneyModel>>()
+    private val _disneyList = MutableLiveData<List<DisneyListModel>>()
 
-    val disneyList: LiveData<List<DisneyModel>> get() = _disneyList
+    val disneyList: LiveData<List<DisneyListModel>> get() = _disneyList
 
     init {
         getData()

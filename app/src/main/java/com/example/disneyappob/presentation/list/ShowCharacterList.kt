@@ -24,10 +24,11 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.example.disneyappob.R
+import com.example.disneyappob.domain.model.DisneyListModel
 import com.example.disneyappob.domain.model.DisneyModel
 
 @Composable
-fun ShowCharacterList(disney: DisneyModel, onClick:(() -> Unit
+fun ShowCharacterList(disney: DisneyListModel, onClick:(() -> Unit
 )) {
     Row(
         modifier = Modifier
@@ -38,8 +39,7 @@ fun ShowCharacterList(disney: DisneyModel, onClick:(() -> Unit
     ) {
         AsyncImage(
             modifier = Modifier
-                .size(100.dp)
-                .clip(CircleShape),
+                .size(100.dp),
             placeholder = painterResource(id = R.drawable.disney_logo),
             error = painterResource(id = R.drawable.disney_logo),
             model = ImageRequest.Builder(LocalContext.current)
@@ -57,5 +57,5 @@ fun ShowCharacterList(disney: DisneyModel, onClick:(() -> Unit
 @Preview
 @Composable
 fun ShowCharacterPreview() {
-    ShowCharacterList(DisneyModel(1,"","", listOf(), listOf()), {})
+    ShowCharacterList(DisneyListModel(1,"",""), {})
 }

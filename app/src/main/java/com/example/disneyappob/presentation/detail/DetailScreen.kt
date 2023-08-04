@@ -54,8 +54,7 @@ fun DetailScreen(
         ) {
             AsyncImage(
                 modifier = Modifier
-                    .size(250.dp)
-                    .clip(CircleShape),
+                    .size(250.dp),
                 placeholder = painterResource(id = R.drawable.disney_logo),
                 error = painterResource(id = R.drawable.disney_logo),
                 model = ImageRequest.Builder(LocalContext.current)

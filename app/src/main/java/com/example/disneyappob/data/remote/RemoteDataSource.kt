@@ -1,9 +1,9 @@
 package com.example.disneyappob.data.remote
 
-import com.example.disneyappob.data.dto.DataDto
-import com.example.disneyappob.data.dto.DisneyDto
+import com.example.disneyappob.data.dto.CharacterDetailDto
+import com.example.disneyappob.data.dto.CharacterDto
 
 interface RemoteDataSource {
-    suspend fun getDisneyList(): List<DisneyDto>
-    suspend fun getDisneyCharacter(id:Int) : DisneyDto
+    suspend fun getDisneyList(): List<CharacterDto>
+    suspend fun getDisneyCharacter(id:Int) : CharacterDetailDto
 }
