@@ -3,7 +3,7 @@ package com.example.disneyappob.domain.useCase
 import com.example.disneyappob.data.DisneyRepository
 import com.example.disneyappob.domain.model.DisneyListModel
 
-class GetDisney1ListUseCase(
+class GetDisneyList1UseCase(
     private val disneyRepository: DisneyRepository
 ) {
 

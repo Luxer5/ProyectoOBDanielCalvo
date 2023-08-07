@@ -23,6 +23,7 @@ fun ListScreen(
 
     val state1 = listScreenViewModel.disneyList1.observeAsState()
     val state2 = listScreenViewModel.disneyList2.observeAsState()
+    val state3 = listScreenViewModel.disneyList3.observeAsState()
 
     /*LazyColumn(horizontalAlignment = Alignment.CenterHorizontally) {
         val disneyList = state.value
@@ -52,10 +53,26 @@ fun ListScreen(
 
         Spacer(modifier = Modifier
             .fillMaxWidth()
-            .height(20.dp))
+            .height(15.dp))
 
         LazyRow(verticalAlignment = Alignment.CenterVertically) {
             val disneyList = state2.value
+
+            items(disneyList?.size ?: 0) { i ->
+                disneyList?.get(i)?.let { disney ->
+                    ShowCharacterCardList(
+                        disney = disney,
+                        onClick = {onItemClicked.invoke(disney.id)}
+                    )
+                }
+            }
+        }
+        Spacer(modifier = Modifier
+            .fillMaxWidth()
+            .height(15.dp))
+
+        LazyRow(verticalAlignment = Alignment.CenterVertically) {
+            val disneyList = state3.value
 
             items(disneyList?.size ?: 0) { i ->
                 disneyList?.get(i)?.let { disney ->

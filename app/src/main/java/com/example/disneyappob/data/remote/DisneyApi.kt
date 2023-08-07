@@ -11,6 +11,8 @@ interface DisneyApi{
     suspend fun getDisneyList1() : DisneyListDto
     @GET("character?page=40")
     suspend fun getDisneyList2() : DisneyListDto
+    @GET("character?page=120")
+    suspend fun getDisneyList3() : DisneyListDto
 
     @GET("character/{id}")
     suspend fun getDisneyCharacter(@Path("id") id:Int): DisneyCharacterDto

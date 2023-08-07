@@ -6,6 +6,7 @@ import com.example.disneyappob.domain.model.DisneyModel
 interface DisneyRepository {
     suspend fun getDisneyList1(): List<DisneyListModel>
     suspend fun getDisneyList2(): List<DisneyListModel>
+    suspend fun getDisneyList3(): List<DisneyListModel>
 
     suspend fun getDisneyCharacter(id: Int) : DisneyModel
 }

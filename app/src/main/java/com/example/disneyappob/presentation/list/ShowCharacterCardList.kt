@@ -31,7 +31,7 @@ fun ShowCharacterCardList(
     onClick:(() -> Unit
 )){
     Card(modifier = Modifier
-        .height(250.dp)
+        .height(220.dp)
         .width(150.dp)
         .padding(8.dp)
         .clickable { onClick?.invoke() }, )
@@ -50,7 +50,7 @@ fun ShowCharacterCardList(
                 contentDescription = ""
             )
 
-            Spacer(modifier = Modifier.fillMaxWidth().height(30.dp))
+            Spacer(modifier = Modifier.fillMaxWidth().height(20.dp))
 
             Text(text = disney.name, fontSize = 12.sp)
         }
