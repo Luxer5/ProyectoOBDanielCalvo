@@ -1,5 +1,6 @@
 package com.example.disneyappob.presentation.list
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -12,9 +13,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.disneyappob.ui.theme.DisneyBlue
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -44,11 +48,13 @@ fun ListScreen(
     }*/
     Column(modifier = Modifier
         .fillMaxSize()
+
+        .background(DisneyBlue)
         .padding(8.dp)
         .verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.SpaceBetween, horizontalAlignment = Alignment.CenterHorizontally) {
-        Text(text = "Mis peliculas favoritas:", fontSize = 30.sp)
+        Text(text = "Mis peliculas favoritas:", fontSize = 30.sp, color = Color.White, fontWeight = FontWeight.Bold)
 
-        Text(text = "El planeta del Tesoro", fontSize = 20.sp)
+        Text(text = "El planeta del Tesoro", fontSize = 20.sp, color = Color.White, fontWeight = FontWeight.Bold)
         
         LazyRow(verticalAlignment = Alignment.CenterVertically) {
             val disneyList = stateTreasure.value
@@ -64,7 +70,7 @@ fun ListScreen(
         }
 
 
-        Text(text = "BigHero 6", fontSize = 20.sp)
+        Text(text = "BigHero 6", fontSize = 20.sp, color = Color.White, fontWeight = FontWeight.Bold)
 
         LazyRow(verticalAlignment = Alignment.CenterVertically) {
             val disneyList = stateHero.value
@@ -78,7 +84,7 @@ fun ListScreen(
                 }
             }
         }
-        Text(text = "Hercules", fontSize = 20.sp)
+        Text(text = "Hercules", fontSize = 20.sp, color = Color.White, fontWeight = FontWeight.Bold)
 
         LazyRow(verticalAlignment = Alignment.CenterVertically) {
             val disneyList = stateHecules.value
@@ -92,7 +98,7 @@ fun ListScreen(
                 }
             }
         }
-        Text(text = "Favoritos", fontSize = 20.sp)
+        Text(text = "Favoritos", fontSize = 20.sp, color = Color.White, fontWeight = FontWeight.Bold)
 
         LazyRow(verticalAlignment = Alignment.CenterVertically) {
             val disneyList = stateFavorites.value
