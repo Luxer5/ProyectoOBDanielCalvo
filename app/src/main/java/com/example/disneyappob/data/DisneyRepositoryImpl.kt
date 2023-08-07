@@ -1,5 +1,6 @@
 package com.example.disneyappob.data
 
+import com.example.disneyappob.data.local.LocalDataSource
 import com.example.disneyappob.data.mappers.toDisneyListModel
 import com.example.disneyappob.data.mappers.toDisneyModel
 import com.example.disneyappob.data.remote.RemoteDataSource
@@ -7,7 +8,8 @@ import com.example.disneyappob.domain.model.DisneyListModel
 import com.example.disneyappob.domain.model.DisneyModel
 
 class DisneyRepositoryImpl(
-    private val remoteDataSource: RemoteDataSource
+    private val remoteDataSource: RemoteDataSource,
+    private val localDataSource: LocalDataSource
 ) : DisneyRepository {
     override suspend fun getDisneyListTreasure(): List<DisneyListModel> = remoteDataSource.getDisneyListTreasure().map {
         it.toDisneyListModel()
