@@ -26,4 +26,7 @@ class DisneyRepositoryImpl(
     override suspend fun insertFav(character: DisneyModel) = localDataSource.insertFav(character.toCharacterLocal())
 
     override suspend fun deleteFav(character: DisneyModel) = localDataSource.deleteFav(character.toCharacterLocal())
+    override suspend fun getAll(): List<DisneyListModel> = localDataSource.getAll().map {
+        it.toDisneyListModel()
+    }
 }

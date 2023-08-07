@@ -23,3 +23,9 @@ fun DisneyModel.toCharacterLocal() =CharacterLocal(
     name = name,
     imageUrl = imageUrl
 )
+
+fun CharacterLocal.toDisneyListModel() = DisneyListModel(
+    id = id,
+    name = name,
+    imageUrl = imageUrl
+)

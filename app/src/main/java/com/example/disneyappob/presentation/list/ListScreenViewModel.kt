@@ -8,6 +8,7 @@ import com.example.disneyappob.domain.model.DisneyListModel
 import com.example.disneyappob.domain.useCase.GetDisneyListTreasureUseCase
 import com.example.disneyappob.domain.useCase.GetDisneyListHeroUseCase
 import com.example.disneyappob.domain.useCase.GetDisneyListHerculesUseCase
+import com.example.disneyappob.domain.useCase.GetFavoriteListUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -15,7 +16,8 @@ import kotlinx.coroutines.withContext
 class ListScreenViewModel (
     private val getDisneyListTreasureUseCase: GetDisneyListTreasureUseCase,
     private val getDisneyListHeroUseCase: GetDisneyListHeroUseCase,
-    private val getDisneyListHerculesUseCase: GetDisneyListHerculesUseCase
+    private val getDisneyListHerculesUseCase: GetDisneyListHerculesUseCase,
+    private val getFavoriteListUseCase: GetFavoriteListUseCase
     ):ViewModel() {
 
     //val testString = "Test"
@@ -23,10 +25,12 @@ class ListScreenViewModel (
     private val _disneyListTreasure = MutableLiveData<List<DisneyListModel>>()
     private val _disneyListHero = MutableLiveData<List<DisneyListModel>>()
     private val _disneyListHercules = MutableLiveData<List<DisneyListModel>>()
+    private val _disneyListFavorites = MutableLiveData<List<DisneyListModel>>()
 
     val disneyListTreasure: LiveData<List<DisneyListModel>> get() = _disneyListTreasure
     val disneyListHero: LiveData<List<DisneyListModel>> get() = _disneyListHero
     val disneyListHercules: LiveData<List<DisneyListModel>> get() = _disneyListHercules
+    val disneyListFavorites: LiveData<List<DisneyListModel>> get() = _disneyListFavorites
 
     init {
         getData()
@@ -34,18 +38,22 @@ class ListScreenViewModel (
 
     fun getData(){
         viewModelScope.launch {
-            val result1 = withContext(Dispatchers.IO){
+            val resultTreasure = withContext(Dispatchers.IO){
                 getDisneyListTreasureUseCase.invoke()
             }
-            val result2 = withContext(Dispatchers.IO){
+            val resultHero = withContext(Dispatchers.IO){
                 getDisneyListHeroUseCase.invoke()
             }
-            val result3 = withContext(Dispatchers.IO){
+            val resultHercules = withContext(Dispatchers.IO){
                 getDisneyListHerculesUseCase.invoke()
             }
-            _disneyListTreasure.value = result1
-            _disneyListHero.value = result2
-            _disneyListHercules.value = result3
+            val resultFavorites = withContext(Dispatchers.IO){
+                getFavoriteListUseCase.invoke()
+            }
+            _disneyListTreasure.value = resultTreasure
+            _disneyListHero.value = resultHero
+            _disneyListHercules.value = resultHercules
+            _disneyListFavorites.value = resultFavorites
         }
     }
 

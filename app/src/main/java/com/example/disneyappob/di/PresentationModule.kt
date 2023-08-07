@@ -6,7 +6,7 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val presentationModule = module {
-    viewModel{ ListScreenViewModel(get(), get(), get()) }
+    viewModel{ ListScreenViewModel(get(), get(), get(), get()) }
 
-    viewModel{ DetailScreenViewModel(get())}
+    viewModel{ DetailScreenViewModel(get(), get(), get())}
 }

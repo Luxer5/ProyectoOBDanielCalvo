@@ -13,4 +13,6 @@ interface DisneyRepository {
     suspend fun insertFav(character: DisneyModel)
 
     suspend fun deleteFav(character: DisneyModel)
+
+    suspend fun getAll(): List<DisneyListModel>
 }

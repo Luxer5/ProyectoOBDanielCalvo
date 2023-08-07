@@ -26,6 +26,7 @@ fun ListScreen(
     val stateTreasure = listScreenViewModel.disneyListTreasure.observeAsState()
     val stateHero = listScreenViewModel.disneyListHero.observeAsState()
     val stateHecules = listScreenViewModel.disneyListHercules.observeAsState()
+    val stateFavorites = listScreenViewModel.disneyListFavorites.observeAsState()
 
     /*LazyColumn(horizontalAlignment = Alignment.CenterHorizontally) {
         val disneyList = state.value
@@ -79,6 +80,20 @@ fun ListScreen(
 
         LazyRow(verticalAlignment = Alignment.CenterVertically) {
             val disneyList = stateHecules.value
+
+            items(disneyList?.size ?: 0) { i ->
+                disneyList?.get(i)?.let { disney ->
+                    ShowCharacterCardList(
+                        disney = disney,
+                        onClick = {onItemClicked.invoke(disney.id)}
+                    )
+                }
+            }
+        }
+        Text(text = "Favoritos", fontSize = 20.sp)
+
+        LazyRow(verticalAlignment = Alignment.CenterVertically) {
+            val disneyList = stateFavorites.value
 
             items(disneyList?.size ?: 0) { i ->
                 disneyList?.get(i)?.let { disney ->
