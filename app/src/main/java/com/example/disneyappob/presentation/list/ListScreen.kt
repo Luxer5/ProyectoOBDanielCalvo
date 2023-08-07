@@ -2,6 +2,7 @@ package com.example.disneyappob.presentation.list
 
 import android.util.Log
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.livedata.observeAsState
@@ -17,7 +18,7 @@ fun ListScreen(
 
     val state = listScreenViewModel.disneyList.observeAsState()
 
-    LazyColumn(horizontalAlignment = Alignment.CenterHorizontally) {
+    /*LazyColumn(horizontalAlignment = Alignment.CenterHorizontally) {
         val disneyList = state.value
 
         items(disneyList?.size ?: 0) { i ->
@@ -25,7 +26,20 @@ fun ListScreen(
                 ShowCharacterList(
                     disney = disney,
                     onClick = {onItemClicked.invoke(disney.id)}
-                    )
+                )
+            }
+        }
+    }*/
+
+    LazyRow(verticalAlignment = Alignment.CenterVertically) {
+        val disneyList = state.value
+
+        items(disneyList?.size ?: 0) { i ->
+            disneyList?.get(i)?.let { disney ->
+                ShowCharacterCardList(
+                    disney = disney,
+                    onClick = {onItemClicked.invoke(disney.id)}
+                )
             }
         }
     }

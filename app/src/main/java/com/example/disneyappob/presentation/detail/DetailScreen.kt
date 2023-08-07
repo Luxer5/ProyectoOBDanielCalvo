@@ -44,54 +44,7 @@ fun DetailScreen(
     detailScreenViewModel.getData(id)
 
     disneyState.value?.let {disney ->
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(Color.White)
-                .padding(16.dp),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
-        ) {
-            AsyncImage(
-                modifier = Modifier
-                    .size(250.dp),
-                placeholder = painterResource(id = R.drawable.disney_logo),
-                error = painterResource(id = R.drawable.disney_logo),
-                model = ImageRequest.Builder(LocalContext.current)
-                    .data(disney.imageUrl)
-                    .build(),
-                contentDescription = ""
-            )
-
-            Text(text = "Programas de television:", fontSize = 25.sp)
-
-            LazyColumn(horizontalAlignment = Alignment.CenterHorizontally,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(180.dp)){
-                items(disney.tvShows.size){tvShow ->
-                    Text(text = disney.tvShows[tvShow])
-                }
-            }
-            Spacer(modifier = Modifier
-                .fillMaxWidth()
-                .height(16.dp))
-
-            Text(text = "Peliculas:", fontSize = 25.sp)
-
-            LazyColumn(horizontalAlignment = Alignment.CenterHorizontally,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(180.dp)){
-                items(disney.films.size){ film ->
-                    Text(text = disney.films[film])
-                }
-            }
-
-            Spacer(modifier = Modifier
-                .fillMaxWidth()
-                .height(32.dp))
-        }
+        DetailItem(disney = disney)
     }
 }
 

@@ -7,8 +7,8 @@ import retrofit2.http.Path
 
 interface DisneyApi{
 
-    @GET("character?page=2")
-    suspend fun getDisneyList() : DisneyListDto
+    @GET("character?page=5")
+    suspend fun getDisneyList1() : DisneyListDto
 
     @GET("character/{id}")
     suspend fun getDisneyCharacter(@Path("id") id:Int): DisneyCharacterDto

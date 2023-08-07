@@ -6,14 +6,14 @@ import com.example.disneyappob.domain.model.DisneyListModel
 import com.example.disneyappob.domain.model.DisneyModel
 
 fun CharacterDto.toDisneyListModel() = DisneyListModel(
-    id = _id,
-    name = name,
-    imageUrl = imageUrl
+    id = _id?: 0,
+    name = name?: "",
+    imageUrl = imageUrl?: ""
 )
 fun CharacterDetailDto.toDisneyModel() = DisneyModel(
-    id = _id,
-    name = name,
-    imageUrl = imageUrl,
+    id = _id?: 0,
+    name = name?: "",
+    imageUrl = imageUrl?: "",
     tvShows = tvShows?: listOf(),
     films = films?: listOf()
 )
