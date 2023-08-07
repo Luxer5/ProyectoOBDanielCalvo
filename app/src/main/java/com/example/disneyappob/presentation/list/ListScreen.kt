@@ -23,6 +23,8 @@ fun ListScreen(
     onItemClicked: (Int) -> Unit
 ) {
 
+    listScreenViewModel.getData()
+
     val stateTreasure = listScreenViewModel.disneyListTreasure.observeAsState()
     val stateHero = listScreenViewModel.disneyListHero.observeAsState()
     val stateHecules = listScreenViewModel.disneyListHercules.observeAsState()

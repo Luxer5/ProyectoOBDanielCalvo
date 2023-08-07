@@ -31,6 +31,6 @@ fun NavGraphBuilder.addDetailScreen(navController: NavController){
         arguments = Screen.DetailScreen.arguments
     ){navBackStackEntry ->
         val id = navBackStackEntry.arguments?.getInt("disneyId") ?: 0
-        DetailScreen(id = id)
+        DetailScreen(id = id, onBackPressed = {navController.popBackStack()})
     }
 }

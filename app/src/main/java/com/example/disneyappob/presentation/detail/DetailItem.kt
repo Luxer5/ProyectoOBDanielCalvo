@@ -36,6 +36,7 @@ import coil.request.ImageRequest
 import com.example.disneyappob.R
 import com.example.disneyappob.componentes.StartComponent
 import com.example.disneyappob.domain.model.DisneyModel
+import com.example.disneyappob.ui.theme.DisneyBlue
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -108,7 +109,7 @@ fun DetailItem(
             modifier = Modifier
                 .size(50.dp)
                 .clip(CircleShape)
-                .background(Color.Yellow)
+                .background(DisneyBlue)
                 .border(3.dp, Color.Black, CircleShape)
                 .align(Alignment.BottomEnd)
 

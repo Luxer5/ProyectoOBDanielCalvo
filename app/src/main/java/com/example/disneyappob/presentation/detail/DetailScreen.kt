@@ -1,41 +1,32 @@
 package com.example.disneyappob.presentation.detail
 
+import android.annotation.SuppressLint
 import android.util.Log
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.IconButton
+import androidx.compose.material.Scaffold
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
+import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.livedata.observeAsState
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import coil.compose.AsyncImage
-import coil.request.ImageRequest
-import com.example.disneyappob.R
-import com.example.disneyappob.domain.model.DisneyModel
-import com.example.disneyappob.presentation.list.ListScreenViewModel
+import com.example.disneyappob.ui.theme.DisneyBlue
 import org.koin.androidx.compose.koinViewModel
 
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun DetailScreen(
     id: Int,
-    detailScreenViewModel: DetailScreenViewModel = koinViewModel()
+    detailScreenViewModel: DetailScreenViewModel = koinViewModel(),
+    onBackPressed : () -> Unit
 ) {
 
     Log.i("detail",id.toString())
@@ -43,13 +34,40 @@ fun DetailScreen(
     val disneyState = detailScreenViewModel.disney.observeAsState()
     detailScreenViewModel.getData(id)
 
-    disneyState.value?.let {disney ->
+    /*disneyState.value?.let {disney ->
         DetailItem(disney = disney)
+    }*/
+
+    disneyState.value?.let { disney ->
+        Scaffold (
+            topBar = {
+                TopAppBar(
+                    backgroundColor = DisneyBlue,
+                    title = {
+                        Text(text = "Detalle del ${disney.name}", color = Color.White, fontWeight = FontWeight.Bold )
+                    },
+                    navigationIcon = {
+                        IconButton(
+                            modifier= Modifier.semantics {
+                                contentDescription= "Atras, Boton Ir al listado de personajes"
+                            },
+                            onClick = onBackPressed
+                        ) {
+                            Icon(Icons.Filled.ArrowBack, null, tint = Color.White)
+                        }
+                        Icons.Filled.ArrowBack
+                    }
+                )
+            }
+        )
+        {
+            DetailItem(disney = disney)
+        }
     }
 }
 
 @Preview
 @Composable
 fun DetailScreenPreview() {
-    DetailScreen(5)
+    DetailScreen(5, onBackPressed = {})
 }
