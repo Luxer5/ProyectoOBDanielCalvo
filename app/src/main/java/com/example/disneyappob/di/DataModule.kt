@@ -42,7 +42,7 @@ val dataModule = module {
             .build()
     }
 
-    single<DisneyRepository> { DisneyRepositoryImpl(get()) }
+    single<DisneyRepository> { DisneyRepositoryImpl(get(), get()) }
 
     single<RemoteDataSource>{ RemoteDataSourceImpl(get()) }
 
