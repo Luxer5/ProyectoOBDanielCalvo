@@ -1,6 +1,7 @@
 package com.example.disneyappob.data
 
 import com.example.disneyappob.data.local.LocalDataSource
+import com.example.disneyappob.data.mappers.toCharacterLocal
 import com.example.disneyappob.data.mappers.toDisneyListModel
 import com.example.disneyappob.data.mappers.toDisneyModel
 import com.example.disneyappob.data.remote.RemoteDataSource
@@ -22,4 +23,7 @@ class DisneyRepositoryImpl(
     }
 
     override suspend fun getDisneyCharacter(id: Int): DisneyModel = remoteDataSource.getDisneyCharacter(id).toDisneyModel()
+    override suspend fun insertFav(character: DisneyModel) = localDataSource.insertFav(character.toCharacterLocal())
+
+    override suspend fun deleteFav(character: DisneyModel) = localDataSource.deleteFav(character.toCharacterLocal())
 }

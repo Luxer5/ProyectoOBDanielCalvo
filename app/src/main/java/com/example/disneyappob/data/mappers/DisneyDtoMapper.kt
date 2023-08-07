@@ -2,6 +2,7 @@ package com.example.disneyappob.data.mappers
 
 import com.example.disneyappob.data.dto.CharacterDetailDto
 import com.example.disneyappob.data.dto.CharacterDto
+import com.example.disneyappob.data.local.model.CharacterLocal
 import com.example.disneyappob.domain.model.DisneyListModel
 import com.example.disneyappob.domain.model.DisneyModel
 
@@ -16,4 +17,9 @@ fun CharacterDetailDto.toDisneyModel() = DisneyModel(
     imageUrl = imageUrl?: "",
     tvShows = tvShows?: listOf(),
     films = films?: listOf()
+)
+fun DisneyModel.toCharacterLocal() =CharacterLocal(
+    id = id,
+    name = name,
+    imageUrl = imageUrl
 )

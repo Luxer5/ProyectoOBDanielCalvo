@@ -9,4 +9,8 @@ interface DisneyRepository {
     suspend fun getDisneyListHercules(): List<DisneyListModel>
 
     suspend fun getDisneyCharacter(id: Int) : DisneyModel
+
+    suspend fun insertFav(character: DisneyModel)
+
+    suspend fun deleteFav(character: DisneyModel)
 }
