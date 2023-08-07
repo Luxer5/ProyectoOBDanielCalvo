@@ -1,13 +1,18 @@
 package com.example.disneyappob.presentation.list
 
-import android.util.Log
-import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -16,7 +21,8 @@ fun ListScreen(
     onItemClicked: (Int) -> Unit
 ) {
 
-    val state = listScreenViewModel.disneyList.observeAsState()
+    val state1 = listScreenViewModel.disneyList1.observeAsState()
+    val state2 = listScreenViewModel.disneyList2.observeAsState()
 
     /*LazyColumn(horizontalAlignment = Alignment.CenterHorizontally) {
         val disneyList = state.value
@@ -30,19 +36,38 @@ fun ListScreen(
             }
         }
     }*/
+    Column(modifier = Modifier.fillMaxSize().padding(8.dp)) {
+        LazyRow(verticalAlignment = Alignment.CenterVertically) {
+            val disneyList = state1.value
 
-    LazyRow(verticalAlignment = Alignment.CenterVertically) {
-        val disneyList = state.value
+            items(disneyList?.size ?: 0) { i ->
+                disneyList?.get(i)?.let { disney ->
+                    ShowCharacterCardList(
+                        disney = disney,
+                        onClick = {onItemClicked.invoke(disney.id)}
+                    )
+                }
+            }
+        }
 
-        items(disneyList?.size ?: 0) { i ->
-            disneyList?.get(i)?.let { disney ->
-                ShowCharacterCardList(
-                    disney = disney,
-                    onClick = {onItemClicked.invoke(disney.id)}
-                )
+        Spacer(modifier = Modifier
+            .fillMaxWidth()
+            .height(20.dp))
+
+        LazyRow(verticalAlignment = Alignment.CenterVertically) {
+            val disneyList = state2.value
+
+            items(disneyList?.size ?: 0) { i ->
+                disneyList?.get(i)?.let { disney ->
+                    ShowCharacterCardList(
+                        disney = disney,
+                        onClick = {onItemClicked.invoke(disney.id)}
+                    )
+                }
             }
         }
     }
+
 }
 
 @Preview
