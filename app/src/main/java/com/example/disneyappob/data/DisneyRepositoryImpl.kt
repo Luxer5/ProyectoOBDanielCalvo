@@ -9,13 +9,13 @@ import com.example.disneyappob.domain.model.DisneyModel
 class DisneyRepositoryImpl(
     private val remoteDataSource: RemoteDataSource
 ) : DisneyRepository {
-    override suspend fun getDisneyList1(): List<DisneyListModel> = remoteDataSource.getDisneyList1().map {
+    override suspend fun getDisneyListTreasure(): List<DisneyListModel> = remoteDataSource.getDisneyListTreasure().map {
         it.toDisneyListModel()
     }
-    override suspend fun getDisneyList2(): List<DisneyListModel> = remoteDataSource.getDisneyList2().map {
+    override suspend fun getDisneyListHero(): List<DisneyListModel> = remoteDataSource.getDisneyListHero().map {
         it.toDisneyListModel()
     }
-    override suspend fun getDisneyList3(): List<DisneyListModel> = remoteDataSource.getDisneyList3().map {
+    override suspend fun getDisneyListHercules(): List<DisneyListModel> = remoteDataSource.getDisneyListHercules().map {
         it.toDisneyListModel()
     }
 

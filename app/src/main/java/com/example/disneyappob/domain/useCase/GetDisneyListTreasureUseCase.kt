@@ -3,9 +3,9 @@ package com.example.disneyappob.domain.useCase
 import com.example.disneyappob.data.DisneyRepository
 import com.example.disneyappob.domain.model.DisneyListModel
 
-class GetDisneyList3UseCase(
+class GetDisneyListTreasureUseCase(
     private val disneyRepository: DisneyRepository
 ) {
 
-    suspend fun invoke() : List<DisneyListModel> = disneyRepository.getDisneyList3()
+    suspend fun invoke() : List<DisneyListModel> = disneyRepository.getDisneyListTreasure()
 }

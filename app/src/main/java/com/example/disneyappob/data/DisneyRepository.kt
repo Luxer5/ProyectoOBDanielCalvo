@@ -4,9 +4,9 @@ import com.example.disneyappob.domain.model.DisneyListModel
 import com.example.disneyappob.domain.model.DisneyModel
 
 interface DisneyRepository {
-    suspend fun getDisneyList1(): List<DisneyListModel>
-    suspend fun getDisneyList2(): List<DisneyListModel>
-    suspend fun getDisneyList3(): List<DisneyListModel>
+    suspend fun getDisneyListTreasure(): List<DisneyListModel>
+    suspend fun getDisneyListHero(): List<DisneyListModel>
+    suspend fun getDisneyListHercules(): List<DisneyListModel>
 
     suspend fun getDisneyCharacter(id: Int) : DisneyModel
 }

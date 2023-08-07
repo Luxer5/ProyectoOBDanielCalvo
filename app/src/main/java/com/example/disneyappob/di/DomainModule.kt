@@ -1,18 +1,18 @@
 package com.example.disneyappob.di
 
 import com.example.disneyappob.domain.useCase.GetDetailUseCase
-import com.example.disneyappob.domain.useCase.GetDisneyList1UseCase
-import com.example.disneyappob.domain.useCase.GetDisneyList2UseCase
-import com.example.disneyappob.domain.useCase.GetDisneyList3UseCase
+import com.example.disneyappob.domain.useCase.GetDisneyListTreasureUseCase
+import com.example.disneyappob.domain.useCase.GetDisneyListHeroUseCase
+import com.example.disneyappob.domain.useCase.GetDisneyListHerculesUseCase
 import org.koin.dsl.module
 
 val domainModule = module{
 
-    single { GetDisneyList1UseCase(get()) }
+    single { GetDisneyListTreasureUseCase(get()) }
 
-    single { GetDisneyList2UseCase(get()) }
+    single { GetDisneyListHeroUseCase(get()) }
 
-    single { GetDisneyList3UseCase(get()) }
+    single { GetDisneyListHerculesUseCase(get()) }
 
     single { GetDetailUseCase(get()) }
 

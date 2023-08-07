@@ -1,18 +1,20 @@
 package com.example.disneyappob.presentation.list
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -21,9 +23,9 @@ fun ListScreen(
     onItemClicked: (Int) -> Unit
 ) {
 
-    val state1 = listScreenViewModel.disneyList1.observeAsState()
-    val state2 = listScreenViewModel.disneyList2.observeAsState()
-    val state3 = listScreenViewModel.disneyList3.observeAsState()
+    val stateTreasure = listScreenViewModel.disneyListTreasure.observeAsState()
+    val stateHero = listScreenViewModel.disneyListHero.observeAsState()
+    val stateHecules = listScreenViewModel.disneyListHercules.observeAsState()
 
     /*LazyColumn(horizontalAlignment = Alignment.CenterHorizontally) {
         val disneyList = state.value
@@ -37,9 +39,16 @@ fun ListScreen(
             }
         }
     }*/
-    Column(modifier = Modifier.fillMaxSize().padding(8.dp)) {
+    Column(modifier = Modifier
+        .fillMaxSize()
+        .padding(8.dp)
+        .verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.SpaceBetween, horizontalAlignment = Alignment.CenterHorizontally) {
+        Text(text = "Mis peliculas favoritas:", fontSize = 30.sp)
+
+        Text(text = "El planeta del Tesoro", fontSize = 20.sp)
+        
         LazyRow(verticalAlignment = Alignment.CenterVertically) {
-            val disneyList = state1.value
+            val disneyList = stateTreasure.value
 
             items(disneyList?.size ?: 0) { i ->
                 disneyList?.get(i)?.let { disney ->
@@ -51,12 +60,11 @@ fun ListScreen(
             }
         }
 
-        Spacer(modifier = Modifier
-            .fillMaxWidth()
-            .height(15.dp))
+
+        Text(text = "BigHero 6", fontSize = 20.sp)
 
         LazyRow(verticalAlignment = Alignment.CenterVertically) {
-            val disneyList = state2.value
+            val disneyList = stateHero.value
 
             items(disneyList?.size ?: 0) { i ->
                 disneyList?.get(i)?.let { disney ->
@@ -67,12 +75,10 @@ fun ListScreen(
                 }
             }
         }
-        Spacer(modifier = Modifier
-            .fillMaxWidth()
-            .height(15.dp))
+        Text(text = "Hercules", fontSize = 20.sp)
 
         LazyRow(verticalAlignment = Alignment.CenterVertically) {
-            val disneyList = state3.value
+            val disneyList = stateHecules.value
 
             items(disneyList?.size ?: 0) { i ->
                 disneyList?.get(i)?.let { disney ->

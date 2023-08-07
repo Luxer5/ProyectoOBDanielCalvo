@@ -5,28 +5,28 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.disneyappob.domain.model.DisneyListModel
-import com.example.disneyappob.domain.useCase.GetDisneyList1UseCase
-import com.example.disneyappob.domain.useCase.GetDisneyList2UseCase
-import com.example.disneyappob.domain.useCase.GetDisneyList3UseCase
+import com.example.disneyappob.domain.useCase.GetDisneyListTreasureUseCase
+import com.example.disneyappob.domain.useCase.GetDisneyListHeroUseCase
+import com.example.disneyappob.domain.useCase.GetDisneyListHerculesUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class ListScreenViewModel (
-    private val getDisneyList1UseCase: GetDisneyList1UseCase,
-    private val getDisneyList2UseCase: GetDisneyList2UseCase,
-    private val getDisneyList3UseCase: GetDisneyList3UseCase
+    private val getDisneyListTreasureUseCase: GetDisneyListTreasureUseCase,
+    private val getDisneyListHeroUseCase: GetDisneyListHeroUseCase,
+    private val getDisneyListHerculesUseCase: GetDisneyListHerculesUseCase
     ):ViewModel() {
 
     //val testString = "Test"
 
-    private val _disneyList1 = MutableLiveData<List<DisneyListModel>>()
-    private val _disneyList2 = MutableLiveData<List<DisneyListModel>>()
-    private val _disneyList3 = MutableLiveData<List<DisneyListModel>>()
+    private val _disneyListTreasure = MutableLiveData<List<DisneyListModel>>()
+    private val _disneyListHero = MutableLiveData<List<DisneyListModel>>()
+    private val _disneyListHercules = MutableLiveData<List<DisneyListModel>>()
 
-    val disneyList1: LiveData<List<DisneyListModel>> get() = _disneyList1
-    val disneyList2: LiveData<List<DisneyListModel>> get() = _disneyList2
-    val disneyList3: LiveData<List<DisneyListModel>> get() = _disneyList3
+    val disneyListTreasure: LiveData<List<DisneyListModel>> get() = _disneyListTreasure
+    val disneyListHero: LiveData<List<DisneyListModel>> get() = _disneyListHero
+    val disneyListHercules: LiveData<List<DisneyListModel>> get() = _disneyListHercules
 
     init {
         getData()
@@ -35,17 +35,17 @@ class ListScreenViewModel (
     fun getData(){
         viewModelScope.launch {
             val result1 = withContext(Dispatchers.IO){
-                getDisneyList1UseCase.invoke()
+                getDisneyListTreasureUseCase.invoke()
             }
             val result2 = withContext(Dispatchers.IO){
-                getDisneyList2UseCase.invoke()
+                getDisneyListHeroUseCase.invoke()
             }
             val result3 = withContext(Dispatchers.IO){
-                getDisneyList3UseCase.invoke()
+                getDisneyListHerculesUseCase.invoke()
             }
-            _disneyList1.value = result1
-            _disneyList2.value = result2
-            _disneyList3.value = result3
+            _disneyListTreasure.value = result1
+            _disneyListHero.value = result2
+            _disneyListHercules.value = result3
         }
     }
 
