@@ -29,4 +29,6 @@ class DisneyRepositoryImpl(
     override suspend fun getAll(): List<DisneyListModel> = localDataSource.getAll().map {
         it.toDisneyListModel()
     }
+
+    override suspend fun checkFav(id: Int): Boolean = localDataSource.checkFav(id)
 }

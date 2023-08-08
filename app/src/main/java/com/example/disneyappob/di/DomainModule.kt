@@ -1,5 +1,6 @@
 package com.example.disneyappob.di
 
+import com.example.disneyappob.domain.useCase.CheckFavoriteUseCase
 import com.example.disneyappob.domain.useCase.DeleteFavoriteUseCase
 import com.example.disneyappob.domain.useCase.GetDetailUseCase
 import com.example.disneyappob.domain.useCase.GetDisneyListTreasureUseCase
@@ -24,5 +25,7 @@ val domainModule = module{
     single { DeleteFavoriteUseCase(get()) }
 
     single { GetFavoriteListUseCase(get()) }
+
+    single { CheckFavoriteUseCase(get()) }
 
 }

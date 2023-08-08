@@ -18,6 +18,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -47,6 +48,14 @@ fun DetailItem(
     var starred by remember {
         mutableStateOf(false)
     }
+
+    val favState = detailScreenViewModel.fav.observeAsState()
+
+    detailScreenViewModel.checkFav(disney.id)
+    favState.value?.let {fav ->
+        starred = fav
+    }
+
     Box(modifier = Modifier.fillMaxSize()) {
         Column(
             modifier = Modifier
@@ -114,15 +123,17 @@ fun DetailItem(
                 .align(Alignment.BottomEnd)
 
         ){
-            AndroidView(modifier = Modifier.align(Alignment.Center).clickable {
-                val newState = !starred
-                starred = newState
-                if (starred){
-                    detailScreenViewModel.insertFav(disney)
-                }else{
-                    detailScreenViewModel.deleteFav(disney)
-                }
-            },
+            AndroidView(modifier = Modifier
+                .align(Alignment.Center)
+                .clickable {
+                    val newState = !starred
+                    starred = newState
+                    if (starred) {
+                        detailScreenViewModel.insertFav(disney)
+                    } else {
+                        detailScreenViewModel.deleteFav(disney)
+                    }
+                },
                 factory = { context ->
                     StartComponent(context = context).apply {
                         checked = starred

@@ -9,4 +9,6 @@ interface LocalDataSource {
     suspend fun deleteFav(character: CharacterLocal)
 
     suspend fun getAll(): List<CharacterLocal>
+
+    suspend fun checkFav(id: Int): Boolean
 }

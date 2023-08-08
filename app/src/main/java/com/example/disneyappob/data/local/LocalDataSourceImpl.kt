@@ -9,5 +9,6 @@ class LocalDataSourceImpl(
 
     override suspend fun deleteFav(character: CharacterLocal) = disneyDao.deleteFav(character)
     override suspend fun getAll(): List<CharacterLocal> = disneyDao.getAll()
+    override suspend fun checkFav(id: Int): Boolean = disneyDao.checkFav(id)
 
 }

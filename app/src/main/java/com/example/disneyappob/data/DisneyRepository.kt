@@ -15,4 +15,6 @@ interface DisneyRepository {
     suspend fun deleteFav(character: DisneyModel)
 
     suspend fun getAll(): List<DisneyListModel>
+
+    suspend fun checkFav(id: Int): Boolean
 }

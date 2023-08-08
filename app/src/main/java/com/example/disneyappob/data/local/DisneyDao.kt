@@ -19,5 +19,6 @@ interface DisneyDao {
     @Query("SELECT * FROM DisneyFavoriteTable")
     suspend fun getAll() : List<CharacterLocal>
 
-
+    @Query("SELECT EXISTS(SELECT * FROM DisneyFavoriteTable WHERE id = :id)")
+    suspend fun checkFav(id: Int): Boolean
 }
