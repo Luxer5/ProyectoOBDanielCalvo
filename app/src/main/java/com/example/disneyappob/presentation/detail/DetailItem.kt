@@ -1,6 +1,5 @@
 package com.example.disneyappob.presentation.detail
 
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -15,6 +14,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -38,6 +38,7 @@ import com.example.disneyappob.R
 import com.example.disneyappob.componentes.StartComponent
 import com.example.disneyappob.domain.model.DisneyModel
 import com.example.disneyappob.ui.theme.DisneyBlue
+import com.example.disneyappob.ui.theme.DisneyBlueLight
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -56,11 +57,10 @@ fun DetailItem(
         starred = fav
     }
 
-    Box(modifier = Modifier.fillMaxSize()) {
+    Box(modifier = Modifier.fillMaxSize().background(DisneyBlueLight).padding(16.dp)) {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(Color.White)
                 .padding(16.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
@@ -75,35 +75,25 @@ fun DetailItem(
                     .build(),
                 contentDescription = ""
             )
+            Text(text = "Peliculas:", fontSize = 25.sp)
 
-            Text(text = "Programas de television:", fontSize = 25.sp)
-
-            LazyColumn(
-                horizontalAlignment = Alignment.CenterHorizontally,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(180.dp)
-            ) {
-                items(disney.tvShows.size) { tvShow ->
-                    Text(text = disney.tvShows[tvShow])
-                }
-            }
             Spacer(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(16.dp)
+                    .height(8.dp)
             )
-
-            Text(text = "Peliculas:", fontSize = 25.sp)
 
             LazyColumn(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(180.dp)
+                    .height(140.dp)
+                    .clip(RoundedCornerShape(15.dp))
+                    .background(DisneyBlue)
+                    .padding(8.dp)
             ) {
                 items(disney.films.size) { film ->
-                    Text(text = disney.films[film])
+                    Text(text = disney.films[film], color = Color.White)
                 }
             }
 
@@ -111,6 +101,34 @@ fun DetailItem(
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(32.dp)
+            )
+
+            Text(text = "Programas de television:", fontSize = 25.sp)
+
+            Spacer(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(8.dp)
+            )
+
+            LazyColumn(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(140.dp)
+                    .clip(RoundedCornerShape(15.dp))
+                    .background(DisneyBlue)
+                    .padding(8.dp)
+
+            ) {
+                items(disney.tvShows.size) { tvShow ->
+                    Text(text = disney.tvShows[tvShow], color = Color.White)
+                }
+            }
+            Spacer(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(16.dp)
             )
         }
 

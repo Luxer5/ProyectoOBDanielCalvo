@@ -3,7 +3,10 @@ package com.example.disneyappob.presentation.list
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.rememberScrollState
@@ -46,16 +49,41 @@ fun ListScreen(
             }
         }
     }*/
-    Column(modifier = Modifier
-        .fillMaxSize()
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
 
-        .background(DisneyBlue)
-        .padding(8.dp)
-        .verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.SpaceBetween, horizontalAlignment = Alignment.CenterHorizontally) {
-        Text(text = "Mis peliculas favoritas:", fontSize = 30.sp, color = Color.White, fontWeight = FontWeight.Bold)
+            .background(DisneyBlue)
+            .padding(8.dp)
+            .verticalScroll(rememberScrollState()),
+        verticalArrangement = Arrangement.SpaceBetween,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text(
+            text = "Mis peliculas favoritas:",
+            fontSize = 30.sp,
+            color = Color.White,
+            fontWeight = FontWeight.Bold
+        )
 
-        Text(text = "El planeta del Tesoro", fontSize = 20.sp, color = Color.White, fontWeight = FontWeight.Bold)
-        
+        Spacer(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(8.dp)
+        )
+
+        Text(
+            text = "El planeta del Tesoro",
+            fontSize = 20.sp,
+            color = Color.White,
+            fontWeight = FontWeight.Bold
+        )
+        Spacer(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(4.dp)
+        )
+
         LazyRow(verticalAlignment = Alignment.CenterVertically) {
             val disneyList = stateTreasure.value
 
@@ -63,14 +91,29 @@ fun ListScreen(
                 disneyList?.get(i)?.let { disney ->
                     ShowCharacterCardList(
                         disney = disney,
-                        onClick = {onItemClicked.invoke(disney.id)}
+                        onClick = { onItemClicked.invoke(disney.id) }
                     )
                 }
             }
         }
+        Spacer(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(8.dp)
+        )
 
 
-        Text(text = "BigHero 6", fontSize = 20.sp, color = Color.White, fontWeight = FontWeight.Bold)
+        Text(
+            text = "BigHero 6",
+            fontSize = 20.sp,
+            color = Color.White,
+            fontWeight = FontWeight.Bold
+        )
+        Spacer(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(4.dp)
+        )
 
         LazyRow(verticalAlignment = Alignment.CenterVertically) {
             val disneyList = stateHero.value
@@ -79,12 +122,29 @@ fun ListScreen(
                 disneyList?.get(i)?.let { disney ->
                     ShowCharacterCardList(
                         disney = disney,
-                        onClick = {onItemClicked.invoke(disney.id)}
+                        onClick = { onItemClicked.invoke(disney.id) }
                     )
                 }
             }
         }
-        Text(text = "Hercules", fontSize = 20.sp, color = Color.White, fontWeight = FontWeight.Bold)
+
+        Spacer(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(8.dp)
+        )
+        Text(
+            text = "Hercules",
+            fontSize = 20.sp,
+            color = Color.White,
+            fontWeight = FontWeight.Bold
+        )
+
+        Spacer(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(4.dp)
+        )
 
         LazyRow(verticalAlignment = Alignment.CenterVertically) {
             val disneyList = stateHecules.value
@@ -93,12 +153,24 @@ fun ListScreen(
                 disneyList?.get(i)?.let { disney ->
                     ShowCharacterCardList(
                         disney = disney,
-                        onClick = {onItemClicked.invoke(disney.id)}
+                        onClick = { onItemClicked.invoke(disney.id) }
                     )
                 }
             }
         }
-        Text(text = "Favoritos", fontSize = 20.sp, color = Color.White, fontWeight = FontWeight.Bold)
+
+        Spacer(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(8.dp)
+        )
+
+        Text(
+            text = "Favoritos",
+            fontSize = 20.sp,
+            color = Color.White,
+            fontWeight = FontWeight.Bold
+        )
 
         LazyRow(verticalAlignment = Alignment.CenterVertically) {
             val disneyList = stateFavorites.value
@@ -107,7 +179,7 @@ fun ListScreen(
                 disneyList?.get(i)?.let { disney ->
                     ShowCharacterCardList(
                         disney = disney,
-                        onClick = {onItemClicked.invoke(disney.id)}
+                        onClick = { onItemClicked.invoke(disney.id) }
                     )
                 }
             }
