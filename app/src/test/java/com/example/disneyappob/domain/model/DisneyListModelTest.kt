@@ -16,12 +16,12 @@ class DisneyListModelTest{
         assertThat(disneyListModel.id, `is`(5))
     }
     @Test
-    fun `WHEN disneyListModel name = "nombre" EXPECT name = "nombre"`()
+    fun `WHEN disneyListModel name = nombre EXPECT name = nombre`()
     {
         assertThat(disneyListModel.name, `is`("nombre"))
     }
     @Test
-    fun `WHEN disneyListModel imageUrl = "url" EXPECT imageUrl = "url"`()
+    fun `WHEN disneyListModel imageUrl = url EXPECT imageUrl = url`()
     {
         assertThat(disneyListModel.imageUrl, `is`("url"))
     }
