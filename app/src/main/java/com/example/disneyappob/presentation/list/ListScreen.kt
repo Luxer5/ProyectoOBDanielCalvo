@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.livedata.observeAsState
@@ -21,6 +22,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.disneyappob.componentes.CircularProgressBar
 import com.example.disneyappob.ui.theme.DisneyBlue
 import org.koin.androidx.compose.koinViewModel
 
@@ -34,157 +36,151 @@ fun ListScreen(
 
     val stateTreasure = listScreenViewModel.disneyListTreasure.observeAsState()
     val stateHero = listScreenViewModel.disneyListHero.observeAsState()
-    val stateHecules = listScreenViewModel.disneyListHercules.observeAsState()
+    val stateHercules = listScreenViewModel.disneyListHercules.observeAsState()
     val stateFavorites = listScreenViewModel.disneyListFavorites.observeAsState()
 
-    /*LazyColumn(horizontalAlignment = Alignment.CenterHorizontally) {
-        val disneyList = state.value
 
-        items(disneyList?.size ?: 0) { i ->
-            disneyList?.get(i)?.let { disney ->
-                ShowCharacterList(
-                    disney = disney,
-                    onClick = {onItemClicked.invoke(disney.id)}
-                )
-            }
-        }
-    }*/
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-
-            .background(DisneyBlue)
-            .padding(8.dp)
-            .verticalScroll(rememberScrollState()),
-        verticalArrangement = Arrangement.SpaceBetween,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Text(
-            text = "Mis peliculas favoritas:",
-            fontSize = 30.sp,
-            color = Color.White,
-            fontWeight = FontWeight.Bold
-        )
-
-        Spacer(
+    if(stateHero.value == null && stateTreasure.value == null && stateHercules.value == null )
+        CircularProgressBar(true)
+    else{
+        Column(
             modifier = Modifier
-                .fillMaxWidth()
-                .height(8.dp)
-        )
+                .fillMaxSize()
 
-        Text(
-            text = "El planeta del Tesoro",
-            fontSize = 20.sp,
-            color = Color.White,
-            fontWeight = FontWeight.Bold
-        )
-        Spacer(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(4.dp)
-        )
+                .background(DisneyBlue)
+                .padding(8.dp)
+                .verticalScroll(rememberScrollState()),
+            verticalArrangement = Arrangement.SpaceBetween,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Text(
+                text = "Mis peliculas favoritas:",
+                fontSize = 30.sp,
+                color = Color.White,
+                fontWeight = FontWeight.Bold
+            )
 
-        LazyRow(verticalAlignment = Alignment.CenterVertically) {
-            val disneyList = stateTreasure.value
+            Spacer(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(8.dp)
+            )
 
-            items(disneyList?.size ?: 0) { i ->
-                disneyList?.get(i)?.let { disney ->
-                    ShowCharacterCardList(
-                        disney = disney,
-                        onClick = { onItemClicked.invoke(disney.id) }
-                    )
+            Text(
+                text = "El planeta del Tesoro",
+                fontSize = 20.sp,
+                color = Color.White,
+                fontWeight = FontWeight.Bold
+            )
+            Spacer(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(4.dp)
+            )
+
+            LazyRow(verticalAlignment = Alignment.CenterVertically) {
+                val disneyList = stateTreasure.value
+
+                items(disneyList?.size ?: 0) { i ->
+                    disneyList?.get(i)?.let { disney ->
+                        ShowCharacterCardList(
+                            disney = disney,
+                            onClick = { onItemClicked.invoke(disney.id) }
+                        )
+                    }
                 }
             }
-        }
-        Spacer(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(8.dp)
-        )
+            Spacer(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(8.dp)
+            )
 
 
-        Text(
-            text = "BigHero 6",
-            fontSize = 20.sp,
-            color = Color.White,
-            fontWeight = FontWeight.Bold
-        )
-        Spacer(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(4.dp)
-        )
+            Text(
+                text = "BigHero 6",
+                fontSize = 20.sp,
+                color = Color.White,
+                fontWeight = FontWeight.Bold
+            )
+            Spacer(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(4.dp)
+            )
 
-        LazyRow(verticalAlignment = Alignment.CenterVertically) {
-            val disneyList = stateHero.value
+            LazyRow(verticalAlignment = Alignment.CenterVertically) {
+                val disneyList = stateHero.value
 
-            items(disneyList?.size ?: 0) { i ->
-                disneyList?.get(i)?.let { disney ->
-                    ShowCharacterCardList(
-                        disney = disney,
-                        onClick = { onItemClicked.invoke(disney.id) }
-                    )
+                items(disneyList?.size ?: 0) { i ->
+                    disneyList?.get(i)?.let { disney ->
+                        ShowCharacterCardList(
+                            disney = disney,
+                            onClick = { onItemClicked.invoke(disney.id) }
+                        )
+                    }
                 }
             }
-        }
 
-        Spacer(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(8.dp)
-        )
-        Text(
-            text = "Hercules",
-            fontSize = 20.sp,
-            color = Color.White,
-            fontWeight = FontWeight.Bold
-        )
+            Spacer(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(8.dp)
+            )
+            Text(
+                text = "Hercules",
+                fontSize = 20.sp,
+                color = Color.White,
+                fontWeight = FontWeight.Bold
+            )
 
-        Spacer(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(4.dp)
-        )
+            Spacer(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(4.dp)
+            )
 
-        LazyRow(verticalAlignment = Alignment.CenterVertically) {
-            val disneyList = stateHecules.value
+            LazyRow(verticalAlignment = Alignment.CenterVertically) {
+                val disneyList = stateHercules.value
 
-            items(disneyList?.size ?: 0) { i ->
-                disneyList?.get(i)?.let { disney ->
-                    ShowCharacterCardList(
-                        disney = disney,
-                        onClick = { onItemClicked.invoke(disney.id) }
-                    )
+                items(disneyList?.size ?: 0) { i ->
+                    disneyList?.get(i)?.let { disney ->
+                        ShowCharacterCardList(
+                            disney = disney,
+                            onClick = { onItemClicked.invoke(disney.id) }
+                        )
+                    }
                 }
             }
-        }
 
-        Spacer(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(8.dp)
-        )
+            Spacer(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(8.dp)
+            )
 
-        Text(
-            text = "Favoritos",
-            fontSize = 20.sp,
-            color = Color.White,
-            fontWeight = FontWeight.Bold
-        )
+            Text(
+                text = "Personajes Favoritos",
+                fontSize = 30.sp,
+                color = Color.White,
+                fontWeight = FontWeight.Bold
+            )
 
-        LazyRow(verticalAlignment = Alignment.CenterVertically) {
-            val disneyList = stateFavorites.value
+            LazyRow(verticalAlignment = Alignment.CenterVertically) {
+                val disneyList = stateFavorites.value
 
-            items(disneyList?.size ?: 0) { i ->
-                disneyList?.get(i)?.let { disney ->
-                    ShowCharacterCardList(
-                        disney = disney,
-                        onClick = { onItemClicked.invoke(disney.id) }
-                    )
+                items(disneyList?.size ?: 0) { i ->
+                    disneyList?.get(i)?.let { disney ->
+                        ShowCharacterCardList(
+                            disney = disney,
+                            onClick = { onItemClicked.invoke(disney.id) }
+                        )
+                    }
                 }
             }
         }
     }
+
 
 }
 
