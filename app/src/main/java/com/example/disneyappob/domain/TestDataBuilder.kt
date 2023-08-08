@@ -5,8 +5,8 @@ import com.example.disneyappob.domain.model.DisneyModel
 
 class TestDataBuilder() {
     var id = 5
-    var name = "nombre Heroe"
-    var imageUrl = "url del personaje"
+    var name = "nombre"
+    var imageUrl = "url"
     var numElements: Int = 15
 
     fun withName(name: String): TestDataBuilder {
