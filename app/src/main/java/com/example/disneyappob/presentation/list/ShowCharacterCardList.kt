@@ -42,7 +42,8 @@ fun ShowCharacterCardList(
         .padding(4.dp)
         .clickable { onClick?.invoke() }, elevation = 2.dp )
     {
-        Column(modifier = Modifier.fillMaxSize()
+        Column(modifier = Modifier
+            .fillMaxSize()
             .background(DisneyBlueLight),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Top) {

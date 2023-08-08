@@ -26,6 +26,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -53,11 +54,16 @@ fun DetailItem(
     val favState = detailScreenViewModel.fav.observeAsState()
 
     detailScreenViewModel.checkFav(disney.id)
-    favState.value?.let {fav ->
+    favState.value?.let { fav ->
         starred = fav
     }
 
-    Box(modifier = Modifier.fillMaxSize().background(DisneyBlueLight).padding(16.dp)) {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(DisneyBlueLight)
+            .padding(16.dp)
+    ) {
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -67,7 +73,9 @@ fun DetailItem(
         ) {
             AsyncImage(
                 modifier = Modifier
-                    .size(250.dp),
+                    .size(250.dp)
+                    .clip(RoundedCornerShape(10.dp)),
+                contentScale = ContentScale.Crop,
                 placeholder = painterResource(id = R.drawable.disney_logo),
                 error = painterResource(id = R.drawable.disney_logo),
                 model = ImageRequest.Builder(LocalContext.current)
@@ -140,7 +148,7 @@ fun DetailItem(
                 .border(3.dp, Color.Black, CircleShape)
                 .align(Alignment.BottomEnd)
 
-        ){
+        ) {
             AndroidView(modifier = Modifier
                 .align(Alignment.Center)
                 .clickable {
