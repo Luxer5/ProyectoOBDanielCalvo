@@ -44,7 +44,7 @@ fun DetailScreen(
                 TopAppBar(
                     backgroundColor = DisneyBlue,
                     title = {
-                        Text(text = "Detalle del ${disney.name}", color = Color.White, fontWeight = FontWeight.Bold )
+                        Text(text = "Detalle de ${disney.name}", color = Color.White, fontWeight = FontWeight.Bold )
                     },
                     navigationIcon = {
                         IconButton(

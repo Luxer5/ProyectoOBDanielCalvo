@@ -43,7 +43,7 @@ fun StartScreen(
             contentDescription = "DisneyList Application"
         )
         Text(
-            text = "Bienvenidos a la lista de persoanjes Disney",
+            text = "Bienvenidos a la lista de personajes Disney",
             fontSize = 30.sp,
             textAlign = TextAlign.Center
         )
@@ -54,7 +54,7 @@ fun StartScreen(
         )
 
         Text(
-            text = "Para ver el liustado de persoanjes por favor pulse el siguiente boton",
+            text = "Para ver el listado de personajes por favor pulse el siguiente boton",
             fontSize = 20.sp,
             textAlign = TextAlign.Center
         )
