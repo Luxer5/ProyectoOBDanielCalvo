@@ -107,6 +107,7 @@ fun DetailItem(
             ) {
                 items(disney.films.size) { film ->
                     Text(text = disney.films[film], color = Color.White)
+                    Spacer(modifier = Modifier.fillMaxWidth().height(8.dp))
                 }
             }
 
@@ -135,6 +136,7 @@ fun DetailItem(
             ) {
                 items(disney.tvShows.size) { tvShow ->
                     Text(text = disney.tvShows[tvShow], color = Color.White)
+                    Spacer(modifier = Modifier.fillMaxWidth().height(8.dp))
                 }
             }
             Spacer(

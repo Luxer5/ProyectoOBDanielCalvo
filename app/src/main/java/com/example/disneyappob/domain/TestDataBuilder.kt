@@ -9,6 +9,10 @@ class TestDataBuilder() {
     var imageUrl = "url"
     var numElements: Int = 15
 
+    fun withId(id: Int): TestDataBuilder{
+        this.id =  id
+        return  this
+    }
     fun withName(name: String): TestDataBuilder {
         this.name =  name
         return  this
