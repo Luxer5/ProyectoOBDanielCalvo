@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">DisneyAppOB</string>
+    <string name="logo_de_disney_description">Logo de Disney</string>
+    <string name="btn_go_to_app">Acceder a la Aplicacion</string>
+    <string name="login_title">Bienvenidos a la lista de personajes Disney</string>
+    <string name="login_subtitle">Para ver el listado de personajes por favor pulse el siguiente boton</string>
 </resources>

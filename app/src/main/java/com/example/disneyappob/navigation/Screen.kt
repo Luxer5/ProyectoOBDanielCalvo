@@ -12,6 +12,11 @@ sealed class Screen(
         route = "start",
         arguments = emptyList()
     )
+
+    object LoginScreen : Screen(
+        route = "login",
+        arguments = emptyList()
+    )
     object ListScreen : Screen(
         route = "list",
         arguments = emptyList()

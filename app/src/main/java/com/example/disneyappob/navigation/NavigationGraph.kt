@@ -10,11 +10,12 @@ fun NavigationGraph(){
 
     NavHost( //FRagment container view
         navController = navController,
-        startDestination = Screen.StartScreen.route, //igual que el start Destination
+        startDestination = Screen.LoginScreen.route, //igual que el start Destination
     ){
         addStartScreen(navController)
         addListScreen(navController)
         addDetailScreen(navController)
+        addLoginScreen(navController)
 
     }
 }
