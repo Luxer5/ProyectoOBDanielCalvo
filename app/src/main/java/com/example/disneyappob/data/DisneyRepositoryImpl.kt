@@ -12,20 +12,30 @@ class DisneyRepositoryImpl(
     private val remoteDataSource: RemoteDataSource,
     private val localDataSource: LocalDataSource
 ) : DisneyRepository {
-    override suspend fun getDisneyListTreasure(): List<DisneyListModel> = remoteDataSource.getDisneyListTreasure().map {
-        it.toDisneyListModel()
-    }
-    override suspend fun getDisneyListHero(): List<DisneyListModel> = remoteDataSource.getDisneyListHero().map {
-        it.toDisneyListModel()
-    }
-    override suspend fun getDisneyListHercules(): List<DisneyListModel> = remoteDataSource.getDisneyListHercules().map {
-        it.toDisneyListModel()
-    }
+    override suspend fun getDisneyListTreasure(): List<DisneyListModel> =
+        remoteDataSource.getDisneyListTreasure().map {
+            it.toDisneyListModel()
+        }
 
-    override suspend fun getDisneyCharacter(id: Int): DisneyModel = remoteDataSource.getDisneyCharacter(id).toDisneyModel()
-    override suspend fun insertFav(character: DisneyModel) = localDataSource.insertFav(character.toCharacterLocal())
+    override suspend fun getDisneyListHero(): List<DisneyListModel> =
+        remoteDataSource.getDisneyListHero().map {
+            it.toDisneyListModel()
+        }
 
-    override suspend fun deleteFav(character: DisneyModel) = localDataSource.deleteFav(character.toCharacterLocal())
+    override suspend fun getDisneyListHercules(): List<DisneyListModel> =
+        remoteDataSource.getDisneyListHercules().map {
+            it.toDisneyListModel()
+        }
+
+    override suspend fun getDisneyCharacter(id: Int): DisneyModel =
+        remoteDataSource.getDisneyCharacter(id).toDisneyModel()
+
+    override suspend fun insertFav(character: DisneyModel) =
+        localDataSource.insertFav(character.toCharacterLocal())
+
+    override suspend fun deleteFav(character: DisneyModel) =
+        localDataSource.deleteFav(character.toCharacterLocal())
+
     override suspend fun getAll(): List<DisneyListModel> = localDataSource.getAll().map {
         it.toDisneyListModel()
     }
