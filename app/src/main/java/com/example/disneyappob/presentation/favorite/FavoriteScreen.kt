@@ -10,6 +10,8 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import com.example.disneyappob.presentation.list.ShowCharacterCardList
 import com.example.disneyappob.ui.theme.DisneyBlue
@@ -26,7 +28,7 @@ fun FavoriteScreen(
     favoriteScreenViewModel.getData()
 
     Column(modifier = Modifier.fillMaxSize().background(DisneyBlue)) {
-        LazyVerticalGrid( columns = GridCells.Fixed(2), contentPadding = PaddingValues(8.dp), content = {
+        LazyVerticalGrid( modifier = Modifier.semantics { contentDescription= "Personajes favoritos" },columns = GridCells.Fixed(2), contentPadding = PaddingValues(8.dp), content = {
             val disneyList = stateFavorites.value
 
             items(disneyList?.size ?: 0){ i->

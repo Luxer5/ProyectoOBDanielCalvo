@@ -82,7 +82,7 @@ fun DetailItem(
                 model = ImageRequest.Builder(LocalContext.current)
                     .data(disney.imageUrl)
                     .build(),
-                contentDescription = ""
+                contentDescription = "Imagen de ${disney.name}"
             )
             Spacer(
                 modifier = Modifier

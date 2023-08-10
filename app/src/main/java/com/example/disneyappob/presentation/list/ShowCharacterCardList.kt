@@ -21,6 +21,9 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.semantics.clearAndSetSemantics
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -40,7 +43,11 @@ fun ShowCharacterCardList(
         .height(200.dp)
         .width(150.dp)
         .padding(4.dp)
-        .clickable { onClick?.invoke() }, elevation = 2.dp )
+        .clickable { onClick?.invoke() }
+        .semantics(mergeDescendants = true) {  }
+        .clearAndSetSemantics { contentDescription= disney.name },
+        elevation = 2.dp )
+
     {
         Column(modifier = Modifier
             .fillMaxSize()

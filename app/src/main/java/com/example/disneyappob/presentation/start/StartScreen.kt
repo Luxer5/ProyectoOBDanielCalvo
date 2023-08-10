@@ -40,7 +40,7 @@ fun StartScreen(
         Image(
             painter = painterResource(id = R.drawable.disney_logo),
             modifier = Modifier.size(300.dp, 200.dp),
-            contentDescription = "DisneyList Application"
+            contentDescription = "DisneyList Aplicación"
         )
         Text(
             text = "Bienvenidos a la lista de personajes Disney",
@@ -69,7 +69,7 @@ fun StartScreen(
                 contentColor = Color.White
             )
         ) {
-            Text(text = "Acceder a la Aplicacion")
+            Text(text = "Acceder a la aplicación")
         }
 
     }

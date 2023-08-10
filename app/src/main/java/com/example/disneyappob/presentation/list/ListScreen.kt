@@ -19,6 +19,8 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -87,7 +89,7 @@ fun ListScreen(
                     .height(4.dp)
             )
 
-            LazyRow(verticalAlignment = Alignment.CenterVertically) {
+            LazyRow(modifier = Modifier.semantics { contentDescription= "El planeta del tesoro" }, verticalAlignment = Alignment.CenterVertically) {
                 val disneyList = stateTreasure.value
 
                 items(disneyList?.size ?: 0) { i ->
@@ -118,7 +120,7 @@ fun ListScreen(
                     .height(4.dp)
             )
 
-            LazyRow(verticalAlignment = Alignment.CenterVertically) {
+            LazyRow(modifier = Modifier.semantics { contentDescription= "BigHero 6" },verticalAlignment = Alignment.CenterVertically) {
                 val disneyList = stateHero.value
 
                 items(disneyList?.size ?: 0) { i ->
@@ -149,7 +151,7 @@ fun ListScreen(
                     .height(4.dp)
             )
 
-            LazyRow(verticalAlignment = Alignment.CenterVertically) {
+            LazyRow(modifier = Modifier.semantics { contentDescription= "Hércules" },verticalAlignment = Alignment.CenterVertically) {
                 val disneyList = stateHercules.value
 
                 items(disneyList?.size ?: 0) { i ->
