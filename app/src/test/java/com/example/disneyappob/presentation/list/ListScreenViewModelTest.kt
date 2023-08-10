@@ -36,8 +36,7 @@ class ListScreenViewModelTest {
     private lateinit var getDisneyListHeroUseCase: GetDisneyListHeroUseCase
     @MockK(relaxed = true)
     private lateinit var getDisneyListHerculesUseCase: GetDisneyListHerculesUseCase
-    @MockK(relaxed = true)
-    private lateinit var getFavoriteListUseCase: GetFavoriteListUseCase
+
 
     @Before
     fun setup() {
@@ -58,8 +57,7 @@ class ListScreenViewModelTest {
         val viewModel = ListScreenViewModel(
             getDisneyListTreasureUseCase,
             getDisneyListHeroUseCase,
-            getDisneyListHerculesUseCase,
-            getFavoriteListUseCase
+            getDisneyListHerculesUseCase
         )
 
         val res = viewModel.disneyListTreasure.getOrAwaitValue()
@@ -74,8 +72,7 @@ class ListScreenViewModelTest {
         val viewModel = ListScreenViewModel(
             getDisneyListTreasureUseCase,
             getDisneyListHeroUseCase,
-            getDisneyListHerculesUseCase,
-            getFavoriteListUseCase
+            getDisneyListHerculesUseCase
         )
 
         val res = viewModel.disneyListHero.getOrAwaitValue()
@@ -90,27 +87,11 @@ class ListScreenViewModelTest {
         val viewModel = ListScreenViewModel(
             getDisneyListTreasureUseCase,
             getDisneyListHeroUseCase,
-            getDisneyListHerculesUseCase,
-            getFavoriteListUseCase
+            getDisneyListHerculesUseCase
         )
 
         val res = viewModel.disneyListHercules.getOrAwaitValue()
         MatcherAssert.assertThat(res.size, `is`(13))
     }
-    @Test
-    fun `WHEN viewModel init EXPECT data at LiveData in Favorites`() = runTest {
-        coEvery { getFavoriteListUseCase.invoke() } returns TestDataListBuilder()
-            .withNumElements(12)
-            .buildList()
 
-        val viewModel = ListScreenViewModel(
-            getDisneyListTreasureUseCase,
-            getDisneyListHeroUseCase,
-            getDisneyListHerculesUseCase,
-            getFavoriteListUseCase
-        )
-
-        val res = viewModel.disneyListFavorites.getOrAwaitValue()
-        MatcherAssert.assertThat(res.size, `is`(12))
-    }
 }

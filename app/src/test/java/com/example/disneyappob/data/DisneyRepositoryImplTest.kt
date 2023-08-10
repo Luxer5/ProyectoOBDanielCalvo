@@ -95,6 +95,26 @@ class DisneyRepositoryImplTest {
         assertThat(res.size, `is`(2))
 
     }
+    @Test
+    fun `WHEN checkFav id is in list EXPECT return true`() = runTest{
+        coEvery { localDataSource.checkFav(5) } returns true
+
+        val repo = DisneyRepositoryImpl(remoteDataSource, localDataSource)
+        val res = repo.checkFav(5)
+
+        assertThat(res, `is`(true))
+
+    }
+    @Test
+    fun `WHEN checkFav id is in list EXPECT return false`() = runTest{
+        coEvery { localDataSource.checkFav(5) } returns false
+
+        val repo = DisneyRepositoryImpl(remoteDataSource, localDataSource)
+        val res = repo.checkFav(5)
+
+        assertThat(res, `is`(false))
+
+    }
 }
 
 fun getListRemote() = listOf(
