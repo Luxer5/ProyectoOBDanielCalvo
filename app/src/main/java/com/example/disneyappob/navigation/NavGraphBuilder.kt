@@ -4,6 +4,7 @@ import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import com.example.disneyappob.presentation.detail.DetailScreen
+import com.example.disneyappob.presentation.favorite.FavoriteScreen
 import com.example.disneyappob.presentation.list.ListScreen
 import com.example.disneyappob.presentation.start.LoginScreen
 import com.example.disneyappob.presentation.start.StartScreen
@@ -41,5 +42,11 @@ fun NavGraphBuilder.addDetailScreen(navController: NavController){
     ){navBackStackEntry ->
         val id = navBackStackEntry.arguments?.getInt("disneyId") ?: 0
         DetailScreen(id = id, onBackPressed = {navController.popBackStack()})
+    }
+}
+
+fun NavGraphBuilder.addFavoriteScreen(navController: NavController){
+    composable(Screen.FavoriteScreen.route){
+        FavoriteScreen()
     }
 }

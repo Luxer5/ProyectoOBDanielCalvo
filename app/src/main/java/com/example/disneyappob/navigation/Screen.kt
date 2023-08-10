@@ -21,6 +21,10 @@ sealed class Screen(
         route = "list",
         arguments = emptyList()
     )
+    object FavoriteScreen : Screen(
+        route = "fav",
+        arguments = emptyList()
+    )
     object DetailScreen : Screen(
         route = "detail",
         arguments = listOf(

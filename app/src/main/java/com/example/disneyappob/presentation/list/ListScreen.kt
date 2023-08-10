@@ -48,7 +48,7 @@ fun ListScreen(
                 .fillMaxSize()
 
                 .background(DisneyBlue)
-                .padding(8.dp)
+                .padding(8.dp, bottom = 57.dp)
                 .verticalScroll(rememberScrollState()),
             verticalArrangement = Arrangement.SpaceBetween,
             horizontalAlignment = Alignment.CenterHorizontally
