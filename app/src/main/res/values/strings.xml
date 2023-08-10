@@ -13,4 +13,5 @@
     <string name="bighero_title">BigHero 6</string>
     <string name="hercules_title">Hercules</string>
     <string name="my_favorite_characters">Personajes Favoritos</string>
+    <string name="favorite_button">Boton de favoritos</string>
 </resources>
