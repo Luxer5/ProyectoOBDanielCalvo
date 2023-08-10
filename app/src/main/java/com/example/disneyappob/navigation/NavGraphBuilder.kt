@@ -47,6 +47,8 @@ fun NavGraphBuilder.addDetailScreen(navController: NavController){
 
 fun NavGraphBuilder.addFavoriteScreen(navController: NavController){
     composable(Screen.FavoriteScreen.route){
-        FavoriteScreen()
+        FavoriteScreen{disneyId ->
+            navController.navigate("${Screen.DetailScreen.route}/$disneyId")
+        }
     }
 }

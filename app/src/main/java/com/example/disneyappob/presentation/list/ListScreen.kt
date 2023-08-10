@@ -37,7 +37,6 @@ fun ListScreen(
     val stateTreasure = listScreenViewModel.disneyListTreasure.observeAsState()
     val stateHero = listScreenViewModel.disneyListHero.observeAsState()
     val stateHercules = listScreenViewModel.disneyListHercules.observeAsState()
-    val stateFavorites = listScreenViewModel.disneyListFavorites.observeAsState()
 
 
     if(stateHero.value == null && stateTreasure.value == null && stateHercules.value == null )
@@ -158,26 +157,6 @@ fun ListScreen(
                     .fillMaxWidth()
                     .height(8.dp)
             )
-
-            Text(
-                text = "Personajes Favoritos",
-                fontSize = 30.sp,
-                color = Color.White,
-                fontWeight = FontWeight.Bold
-            )
-
-            LazyRow(verticalAlignment = Alignment.CenterVertically) {
-                val disneyList = stateFavorites.value
-
-                items(disneyList?.size ?: 0) { i ->
-                    disneyList?.get(i)?.let { disney ->
-                        ShowCharacterCardList(
-                            disney = disney,
-                            onClick = { onItemClicked.invoke(disney.id) }
-                        )
-                    }
-                }
-            }
         }
     }
 

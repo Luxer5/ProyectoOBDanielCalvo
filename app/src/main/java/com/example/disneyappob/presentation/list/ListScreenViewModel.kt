@@ -16,8 +16,7 @@ import kotlinx.coroutines.withContext
 class ListScreenViewModel (
     private val getDisneyListTreasureUseCase: GetDisneyListTreasureUseCase,
     private val getDisneyListHeroUseCase: GetDisneyListHeroUseCase,
-    private val getDisneyListHerculesUseCase: GetDisneyListHerculesUseCase,
-    private val getFavoriteListUseCase: GetFavoriteListUseCase
+    private val getDisneyListHerculesUseCase: GetDisneyListHerculesUseCase
     ):ViewModel() {
 
     //val testString = "Test"
@@ -25,12 +24,11 @@ class ListScreenViewModel (
     private val _disneyListTreasure = MutableLiveData<List<DisneyListModel>>()
     private val _disneyListHero = MutableLiveData<List<DisneyListModel>>()
     private val _disneyListHercules = MutableLiveData<List<DisneyListModel>>()
-    private val _disneyListFavorites = MutableLiveData<List<DisneyListModel>>()
 
     val disneyListTreasure: LiveData<List<DisneyListModel>> get() = _disneyListTreasure
     val disneyListHero: LiveData<List<DisneyListModel>> get() = _disneyListHero
     val disneyListHercules: LiveData<List<DisneyListModel>> get() = _disneyListHercules
-    val disneyListFavorites: LiveData<List<DisneyListModel>> get() = _disneyListFavorites
+
 
     init {
         getData()
@@ -47,13 +45,10 @@ class ListScreenViewModel (
             val resultHercules = withContext(Dispatchers.IO){
                 getDisneyListHerculesUseCase.invoke()
             }
-            val resultFavorites = withContext(Dispatchers.IO){
-                getFavoriteListUseCase.invoke()
-            }
+
             _disneyListTreasure.value = resultTreasure
             _disneyListHero.value = resultHero
             _disneyListHercules.value = resultHercules
-            _disneyListFavorites.value = resultFavorites
         }
     }
 
