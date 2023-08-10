@@ -4,4 +4,13 @@
     <string name="btn_go_to_app">Acceder a la Aplicacion</string>
     <string name="login_title">Bienvenidos a la lista de personajes Disney</string>
     <string name="login_subtitle">Para ver el listado de personajes por favor pulse el siguiente boton</string>
+    <string name="detail_title_films">Peliculas:</string>
+    <string name="detail_title_tvShows">Programas de television:</string>
+    <string name="go_to_list">Atras, Boton Ir al listado de personajes</string>
+    <string name="favorite_characters_description">Personajes favoritos</string>
+    <string name="my_favorite_films">Mis peliculas favoritas:</string>
+    <string name="treasure_planet_text">El planeta del Tesoro</string>
+    <string name="bighero_title">BigHero 6</string>
+    <string name="hercules_title">Hercules</string>
+    <string name="my_favorite_characters">Personajes Favoritos</string>
 </resources>

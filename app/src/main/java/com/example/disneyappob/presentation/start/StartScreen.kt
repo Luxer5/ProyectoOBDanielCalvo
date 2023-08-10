@@ -18,6 +18,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -40,10 +41,10 @@ fun StartScreen(
         Image(
             painter = painterResource(id = R.drawable.disney_logo),
             modifier = Modifier.size(300.dp, 200.dp),
-            contentDescription = "DisneyList Aplicación"
+            contentDescription = stringResource(id = R.string.logo_de_disney_description)
         )
         Text(
-            text = "Bienvenidos a la lista de personajes Disney",
+            text = stringResource(id = R.string.login_title),
             fontSize = 30.sp,
             textAlign = TextAlign.Center
         )
@@ -54,7 +55,7 @@ fun StartScreen(
         )
 
         Text(
-            text = "Para ver el listado de personajes por favor pulse el siguiente boton",
+            text = stringResource(id = R.string.login_subtitle),
             fontSize = 20.sp,
             textAlign = TextAlign.Center
         )
@@ -69,7 +70,7 @@ fun StartScreen(
                 contentColor = Color.White
             )
         ) {
-            Text(text = "Acceder a la aplicación")
+            Text(text = stringResource(id = R.string.btn_go_to_app))
         }
 
     }

@@ -19,12 +19,14 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.disneyappob.R
 import com.example.disneyappob.componentes.CircularProgressBar
 import com.example.disneyappob.ui.theme.DisneyBlue
 import org.koin.androidx.compose.koinViewModel
@@ -65,7 +67,7 @@ fun ListScreen(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
-                text = "Mis peliculas favoritas:",
+                text = stringResource(R.string.my_favorite_films),
                 fontSize = 30.sp,
                 color = Color.White,
                 fontWeight = FontWeight.Bold
@@ -78,7 +80,7 @@ fun ListScreen(
             )
 
             Text(
-                text = "El planeta del Tesoro",
+                text = stringResource(R.string.treasure_planet_text),
                 fontSize = 20.sp,
                 color = Color.White,
                 fontWeight = FontWeight.Bold
@@ -109,7 +111,7 @@ fun ListScreen(
 
 
             Text(
-                text = "BigHero 6",
+                text = stringResource(R.string.bighero_title),
                 fontSize = 20.sp,
                 color = Color.White,
                 fontWeight = FontWeight.Bold
@@ -139,7 +141,7 @@ fun ListScreen(
                     .height(8.dp)
             )
             Text(
-                text = "Hercules",
+                text = stringResource(R.string.hercules_title),
                 fontSize = 20.sp,
                 color = Color.White,
                 fontWeight = FontWeight.Bold
