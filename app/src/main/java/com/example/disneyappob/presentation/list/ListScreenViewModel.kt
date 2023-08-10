@@ -1,5 +1,6 @@
 package com.example.disneyappob.presentation.list
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -12,6 +13,7 @@ import com.example.disneyappob.domain.useCase.GetFavoriteListUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.lang.Exception
 
 class ListScreenViewModel (
     private val getDisneyListTreasureUseCase: GetDisneyListTreasureUseCase,
@@ -29,6 +31,9 @@ class ListScreenViewModel (
     val disneyListHero: LiveData<List<DisneyListModel>> get() = _disneyListHero
     val disneyListHercules: LiveData<List<DisneyListModel>> get() = _disneyListHercules
 
+    private val _errorMessage = MutableLiveData<String?>()
+    val error: LiveData<String?> get() =_errorMessage
+
 
     init {
         getData()
@@ -36,19 +41,25 @@ class ListScreenViewModel (
 
     fun getData(){
         viewModelScope.launch {
-            val resultTreasure = withContext(Dispatchers.IO){
-                getDisneyListTreasureUseCase.invoke()
-            }
-            val resultHero = withContext(Dispatchers.IO){
-                getDisneyListHeroUseCase.invoke()
-            }
-            val resultHercules = withContext(Dispatchers.IO){
-                getDisneyListHerculesUseCase.invoke()
+            try {
+                _errorMessage.value = null
+                val resultTreasure = withContext(Dispatchers.IO){
+                    getDisneyListTreasureUseCase.invoke()
+                }
+                val resultHero = withContext(Dispatchers.IO){
+                    getDisneyListHeroUseCase.invoke()
+                }
+                val resultHercules = withContext(Dispatchers.IO){
+                    getDisneyListHerculesUseCase.invoke()
+                }
+
+                _disneyListTreasure.value = resultTreasure
+                _disneyListHero.value = resultHero
+                _disneyListHercules.value = resultHercules
+            }catch (e: Exception){
+                _errorMessage.value = "Error producido al realizar la peticion a la api"
             }
 
-            _disneyListTreasure.value = resultTreasure
-            _disneyListHero.value = resultHero
-            _disneyListHercules.value = resultHercules
         }
     }
 

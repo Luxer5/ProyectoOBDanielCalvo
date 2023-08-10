@@ -2,6 +2,8 @@ package com.example.disneyappob.presentation.detail
 
 import android.annotation.SuppressLint
 import android.util.Log
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.IconButton
 import androidx.compose.material.Scaffold
 import androidx.compose.material.icons.Icons
@@ -32,11 +34,15 @@ fun DetailScreen(
     Log.i("detail",id.toString())
 
     val disneyState = detailScreenViewModel.disney.observeAsState()
+    val stateError = detailScreenViewModel.error.observeAsState()
     detailScreenViewModel.getData(id)
 
-    /*disneyState.value?.let {disney ->
-        DetailItem(disney = disney)
-    }*/
+    if(stateError.value?.isNotEmpty() ==true){
+        val error =stateError.value
+        Box(modifier = Modifier.fillMaxSize()){
+            androidx.compose.material.Text(text = error ?: "")
+        }
+    }
 
     disneyState.value?.let { disney ->
         Scaffold (

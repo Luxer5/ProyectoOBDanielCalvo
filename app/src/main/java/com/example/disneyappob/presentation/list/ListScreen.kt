@@ -2,6 +2,7 @@ package com.example.disneyappob.presentation.list
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -38,6 +39,15 @@ fun ListScreen(
     val stateHero = listScreenViewModel.disneyListHero.observeAsState()
     val stateHercules = listScreenViewModel.disneyListHercules.observeAsState()
 
+    val stateError = listScreenViewModel.error.observeAsState()
+
+
+    if(stateError.value?.isNotEmpty() ==true){
+        val error =stateError.value
+        Box(modifier = Modifier.fillMaxSize()){
+            androidx.compose.material.Text(text = error ?: "")
+        }
+    }
 
     if(stateHero.value == null && stateTreasure.value == null && stateHercules.value == null )
         CircularProgressBar(true)

@@ -12,6 +12,7 @@ import com.example.disneyappob.domain.useCase.InsertFavoriteUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.lang.Exception
 
 class DetailScreenViewModel(
     private val getDetailUseCase: GetDetailUseCase,
@@ -25,12 +26,21 @@ class DetailScreenViewModel(
     val disney: LiveData<DisneyModel> get() = _disney
     val fav: LiveData<Boolean> get() = _fav
 
+    private val _errorMessage = MutableLiveData<String?>()
+    val error: LiveData<String?> get() =_errorMessage
+
     fun getData(id: Int){
         viewModelScope.launch {
-            val resultDisney = withContext(Dispatchers.IO){
-                getDetailUseCase.invoke(id)
+            try {
+                _errorMessage.value = null
+                val resultDisney = withContext(Dispatchers.IO){
+                    getDetailUseCase.invoke(id)
+                }
+                _disney.value = resultDisney
+            }catch (e: Exception){
+                _errorMessage.value = "Error producido al realizar la peticion a la api"
             }
-            _disney.value = resultDisney
+
         }
     }
 
