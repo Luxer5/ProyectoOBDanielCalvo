@@ -7,6 +7,7 @@ import com.example.disneyappob.data.dto.CharacterDto
 import com.example.disneyappob.data.local.LocalDataSource
 import com.example.disneyappob.data.local.model.CharacterLocal
 import com.example.disneyappob.data.remote.RemoteDataSource
+import com.example.disneyappob.domain.TestDataBuilder
 import com.example.disneyappob.domain.model.DisneyModel
 import com.example.disneyappob.testutil.DefaultDispatcherRule
 import io.mockk.MockKAnnotations
@@ -114,6 +115,20 @@ class DisneyRepositoryImplTest {
 
         assertThat(res, `is`(false))
 
+    }
+    @Test
+    fun `WHEN insertFav EXPECT no Exception `() = runTest{
+        coEvery { localDataSource.insertFav(CharacterLocal(5,"", "")) } returns Unit
+
+        val repo = DisneyRepositoryImpl(remoteDataSource, localDataSource)
+        repo.insertFav(TestDataBuilder().buildSingle())
+    }
+    @Test
+    fun `WHEN deleteFav EXPECT no Exception `() = runTest{
+        coEvery { localDataSource.deleteFav(CharacterLocal(5,"", "")) } returns Unit
+
+        val repo = DisneyRepositoryImpl(remoteDataSource, localDataSource)
+        repo.deleteFav(TestDataBuilder().buildSingle())
     }
 }
 

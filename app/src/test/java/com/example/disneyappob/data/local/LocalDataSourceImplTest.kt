@@ -1,10 +1,12 @@
 package com.example.disneyappob.data.local
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import com.example.disneyappob.data.DisneyRepositoryImpl
 import com.example.disneyappob.data.dto.CharacterDto
 import com.example.disneyappob.data.dto.DisneyListDto
 import com.example.disneyappob.data.local.model.CharacterLocal
 import com.example.disneyappob.data.remote.DisneyApi
+import com.example.disneyappob.domain.TestDataBuilder
 import com.example.disneyappob.testutil.DefaultDispatcherRule
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
@@ -70,6 +72,21 @@ class LocalDataSourceImplTest{
         val res = localDataSource.checkFav(5)
 
         assertThat(res, `is`(false))
+    }
+
+    @Test
+    fun `WHEN insertFav EXPECT no Exception `() = runTest{
+        coEvery { disneyDao.insertFav(CharacterLocal(5,"", "")) } returns Unit
+
+        val localDataSource = LocalDataSourceImpl(disneyDao)
+        localDataSource.insertFav(CharacterLocal(5,"", ""))
+    }
+    @Test
+    fun `WHEN deleteFav EXPECT no Exception `() = runTest{
+        coEvery { disneyDao.deleteFav(CharacterLocal(5,"", "")) } returns Unit
+
+        val localDataSource = LocalDataSourceImpl(disneyDao)
+        localDataSource.deleteFav(CharacterLocal(5,"", ""))
     }
 
 }
