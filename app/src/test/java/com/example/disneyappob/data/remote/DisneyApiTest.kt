@@ -41,17 +41,17 @@ class DisneyApiTest {
         assertThat(result.data.isNotEmpty(), `is`(true) )
     }
     @Test
-    fun `WHEN request disney list Treasure EXPECT instance of DisneyListList`() = runTest{
+    fun `WHEN request disney list Treasure EXPECT instance of DisneyListDto`() = runTest{
         val result = api.getDisneyListTreasure()
         assertThat(result, instanceOf(DisneyListDto::class.java) )
     }
     @Test
-    fun `WHEN request disney list Hero EXPECT instance of List`() = runTest{
+    fun `WHEN request disney list Hero EXPECT instance of DisneyListDto`() = runTest{
         val result = api.getDisneyListHero()
         assertThat(result, instanceOf(DisneyListDto::class.java) )
     }
     @Test
-    fun `WHEN request disney list Hercules EXPECT instance of List`() = runTest{
+    fun `WHEN request disney list Hercules EXPECT instance of DisneyListDto`() = runTest{
         val result = api.getDisneyListHercules()
         assertThat(result, instanceOf(DisneyListDto::class.java) )
     }
@@ -62,7 +62,7 @@ class DisneyApiTest {
         assertThat(result, instanceOf(DisneyCharacterDto::class.java))
     }
     @Test
-    fun `WHEN getDisneyChararcter with id 35 EXPECT instace of result id 0 5`() = runTest {
+    fun `WHEN getDisneyChararcter with id 35 EXPECT instace of result id = 355`() = runTest {
         val result = api.getDisneyCharacter(35)
         assertThat(result.data._id, `is`(35) )
     }

@@ -44,7 +44,7 @@ class CheckFavoriteUseCaseTest{
         MatcherAssert.assertThat(res, `is`(true))
     }
     @Test
-    fun `WHEN invoke EXPECT item return instance of DisneyListModel`() = runTest{
+    fun `WHEN invoke id in database EXPECT return false`() = runTest{
         coEvery { disneyRepository.checkFav(5) } returns false
 
         val useCase = CheckFavoriteUseCase(disneyRepository)
